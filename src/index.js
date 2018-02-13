@@ -17,7 +17,7 @@ module.exports = function multiply(first, second) {
     };
   function mult(arr1, arr2) { // умножение столбиком
     var res = [];
-    for (var i = 0; i < ((arr1.length*2)-1); i++) {
+    for (var i = 0; i < (arr1.length*2); i++) {
       res[i] = 0;
     };
     for (i = 0; i < arr1.length; i++) {
@@ -35,6 +35,9 @@ module.exports = function multiply(first, second) {
       };
     };
     res.reverse()
+    while (res[0] == 0) {
+      res.splice(0, 1);
+    }
     return res.join("");
   };
   var first = reverse(first),
