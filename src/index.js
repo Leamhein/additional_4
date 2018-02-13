@@ -1,25 +1,44 @@
 module.exports = function multiply(first, second) {
-  function Reverse (array) {
-   var arr = array.split('');
-   return arr.reverse();
+  function reverse (string) { // создает реверсивные массивы из входных чисел
+    var rArr = string.split("").reverse();
+    return rArr;
   };
-  function Multiplication (first, second) {
-    var revResult = [],
-    length = 0;
-    if (first.length > second.length) {
-      length = first.length;
-      revResult = first;
-    } else {
-      length = second.length;
-      revResult = second;
+  function length (arr1, arr2) { // приводит массивы к одной длинне забивая в пустые ячейки нули
+    if (arr1.length > arr2.length) {
+      for (var i = arr2.length; i < arr1.length; i++) {
+        arr2[i] = 0;};
+      } else {
+        if (arr1.length < arr2.length) {
+          for (i = arr1.length; i < arr2.length; i++) {
+            arr1[i] = 0;
+          };
+        };
+      };
     };
-    for (var i = 0; i < length; i++) {
-      while (typeOf(first[i]) !== undefined || typeOf(second[i]) !== undefined) {
-        if (first[i] * second[i] > 9) {
-
-        }
-      }
-    }
+  function mult(arr1, arr2) { // умножение столбиком
+    var res = [];
+    for (var i = 0; i < ((arr1.length*2)-1); i++) {
+      res[i] = 0;
+    };
+    for (i = 0; i < arr1.length; i++) {
+      for (var j = 0; j < arr2.length; j++) {
+        res[i+j] += arr1[i] * arr2[j];
+      };
+    };
+    return res;
   };
+  function result (res) { // суммирование  и вывод результата
+    for (var i = 0; i < res.length; i++) {
+        while (res[i] >= 10) {
+          res[i+1] += Math.floor(res[i]/10);
+          res[i] %= 10;
+      };
+    };
+    res.reverse()
+    return res.join("");
+  };
+  var first = reverse(first),
+  second = reverse(second);
+  length(first, second);
+  return res = result(mult(first,second));
 };
-module.exports(1,2);
